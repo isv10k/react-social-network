@@ -1,13 +1,34 @@
-ul li {
-  list-style-type: lower-greek;
+.app-wrapper {
+  margin: 0 auto;
+  width: 1200px;
+  display: grid;
+  grid-template-areas: 
+  "header header"
+  "nav content";
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2 fr 10fr;
+  grid-gap: 10px;
 }
 
-.nav {
-  font-size: 14px;
-  color: blue;
+header {
+  grid-area: header;
+  background-color: green;
 }
 
-.nav a {
-  margin-left: 15px;
+header img {
+  width: 20px;
 }
 
+nav {
+  grid-area: nav;
+  background-color: yellow;
+}
+
+.content {
+  grid-area: content;
+  background-color: red;
+}
+
+.ava {
+  height: 250px;
+}
