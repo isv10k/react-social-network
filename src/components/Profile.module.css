@@ -1,0 +1,20 @@
+main {
+  grid-area: content;
+  background-color: red;
+}
+
+.backImg {
+  width: 800px;
+}
+
+.ava {
+  height: 250px;
+}
+
+.item {
+  color: #34f3dd;
+}
+
+.posts {
+  background-color: purple;
+}
