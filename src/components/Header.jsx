@@ -3,7 +3,7 @@ import s from './Header.module.css';
 
 const Header = () => {
     return (
-        <header className={s.header}>
+        <header>
         <img src="./../logo192.png" />
       </header>
     );
