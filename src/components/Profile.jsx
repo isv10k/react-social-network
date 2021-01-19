@@ -1,27 +1,30 @@
 import React from 'react';
+import s from './Profile.module.css';
 
 const Profile = () => {
     return (
-        <div className='content'>
+        <main>
         <div>
-          <img src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.Cp2S7t-jug_7o-eWKkCMXwHaEO%26pid%3DApi&f=1' />
+          <img className={s.backImg} src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.sciencealert.com%2Fimages%2Farticles%2Fprocessed%2F1shutterstock_336744542_1024.jpg&f=1&nofb=1' />
         </div>
         <div>
-          <img className='ava' src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ZNF3UzwEu_aKaw6Jh8wdrwHaNK%26pid%3DApi&f=1" />
+          <img className={s.ava} src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ZNF3UzwEu_aKaw6Jh8wdrwHaNK%26pid%3DApi&f=1" />
         </div>
         <div>
           my posts
-          <div>
-            new post
-          </div>
-          <div>
-            post1
-          </div>
-          <div>
-            post2
-          </div>
+            <div>
+                new post
+            </div>
+            <div className={s.posts}>
+                <div className={s.item}>
+                    post1
+                </div>
+                <div className={s.item}>
+                    post2
+                </div>
+            </div>
         </div>
-      </div>
+      </main>
     );
 }
 
