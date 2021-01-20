@@ -11,9 +11,8 @@ const MyPosts = () => {
                 <input type='text' />
             </div>
             <div>
-                <Post />
-                <Post />
-                <Post />
+                <Post message='hey yo' likeCount='15' />
+                <Post message='it is happening' likeCount='1' />
             </div>
         </div>
     );
