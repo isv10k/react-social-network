@@ -5,6 +5,9 @@ nav {
 
 .item {
     color: white;
+}
+
+.item a {
     padding-top: 5px;
     padding-left: 30px;
 }
