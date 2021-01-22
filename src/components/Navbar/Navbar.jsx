@@ -6,7 +6,7 @@ const Navbar = () => {
         <nav>
             <div className={s.item}><a href='#s'>Profiles</a></div>
             <div className={s.item}><a href='#s'>Messages</a></div>
-            <div className={s.item}><a href='#s'>News</a></div>
+            <div className={`${s.item} ${s.active}`}><a href='#s'>News</a></div>
             <div className={s.item}><a href='#s'>Music</a></div>
             <div className={s.item}><a href='#s'>Settings</a></div>
         </nav>
