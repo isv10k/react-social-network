@@ -1,30 +1,17 @@
 import React from 'react';
 import s from './Messages.module.css';
+import Contact from './Contact/Contact';
+import MessageItem from './MessageItem/MessageItem';
+
 
 const Messages = (props) => {
     return (
         <div className={s.dialogs}>
             <div className={s.contacts}>
-                <div className={s.contact + ' ' + s.active}>
-                    Sasha
-                </div>
-                <div className={s.contact}>
-                    Andrey
-                </div>
-                <div className={s.contact}>
-                    Kostya
-                </div>
+                { props.state.contacts.map( contact => <Contact name={contact.name} id={contact.id} key={contact.id}/> ) }
             </div>
             <div className={s.messages}>
-                <div className={s.messageItem}>
-                    Yo
-                </div>
-                <div className={s.messageItem}>
-                    Wusaaup
-                </div>
-                <div className={s.messageItem}>
-                    Fuck you
-                </div>
+                { props.state.messages.map( message => <MessageItem message={message.message} id={message.id} key={message.id}/> ) }
             </div>
         </div>
     )
