@@ -5,14 +5,13 @@ nav {
 
 .item {
     color: white;
-    padding: 10px;
 }
 
 .item a {
-    text-decoration: none;
+    padding-top: 5px;
+    padding-left: 30px;
 }
 
-.item a.active {
+.item.active {
     font-weight: bolder;
-    color: gold;
 }

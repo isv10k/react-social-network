@@ -1,0 +1,25 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.contacts {
+    padding: 20px;
+}
+
+.contact {
+    padding: 10px;
+}
+
+.contact.active {
+    color: gold;
+}
+
+.messages {
+    padding: 20px;
+}
+
+.messageItem {
+    padding: 10px;
+}
+
