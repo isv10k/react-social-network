@@ -8,6 +8,7 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import { BrowserRouter, Route } from 'react-router-dom';
+import Sidebar from './components/Sidebar/Sidebar';
 
 
 const App = (props) => {
@@ -16,6 +17,7 @@ const App = (props) => {
             <div className='app-wrapper'>
                 <Header />
                 <Navbar />
+                <Sidebar state={props.state.messagesPage.contacts}/>
                 <div className='app-wrapper-content'>
                     <Route
                         path='/messages'

@@ -26,5 +26,18 @@
 
 .messageItem {
     padding: 10px;
+    margin-bottom: 10px;
+    background-color: hotpink;
+    
 }
+
+.yourMessage {
+    text-align: right;
+}
+
+.messageField {
+    
+    
+}
+
 
