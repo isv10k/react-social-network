@@ -22,7 +22,7 @@ const App = (props) => {
                     <Route
                         path='/messages'
                         render={() => (
-                            <Messages state={props.state.messagesPage} />
+                            <Messages state={props.state.messagesPage} store={props.store}/>
                         )}
                     />
                     <Route
