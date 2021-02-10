@@ -22,13 +22,13 @@ const App = (props) => {
                     <Route
                         path='/messages'
                         render={() => (
-                            <Messages state={props.state.messagesPage} store={props.store}/>
+                            <Messages state={props.state.messagesPage} addMessage={props.addMessage} draftMessageUpdate={props.draftMessageUpdate}/>
                         )}
                     />
                     <Route
                         path='/profile'
                         render={() => (
-                            <Profile state={props.state.profilePage} />
+                            <Profile state={props.state.profilePage} addPost={props.addPost} draftPostUpdate={props.draftPostUpdate}/>
                         )}
                     />
                     {/* <Route exact path='/messages' component={Messages} /> */}

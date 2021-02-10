@@ -15,7 +15,12 @@ let store = {
             posts: [
                 { id: 1, message: "hey yo", likeCount: 15 },
                 { id: 2, message: "it is happening", likeCount: 1 },
-            ]
+            ],
+            draftPost: {
+                id: 0,
+                message: '',
+                likeCount: 0,
+            }
         },
         messagesPage: {
             contacts: [
@@ -43,7 +48,7 @@ let store = {
         },
 
     },
-    renderAll() { },
+    _callSubscriber() { },
     addMessage() {
         //console.table('addmessagePo FACTU', messageObject)
         let newId = this._state.messagesPage.messages[this._state.messagesPage.messages.length - 1].id + 1;
@@ -62,15 +67,38 @@ let store = {
             messageAuthor: 0,
             timeStamp: ""
         }
-        this.renderAll()
+        this._callSubscriber()
     },
     draftMessageUpdate(newDraftMessage) {
         this._state.messagesPage.draftMessage = newDraftMessage
-        this.renderAll()
+        this._callSubscriber()
+    },
+    addPost() {
+        let newId = this._state.profilePage.posts[this._state.profilePage.posts.length - 1].id + 1
+        this._state.profilePage.posts.push({
+            id: newId,
+            message: this._state.profilePage.draftPost.message,
+            likeCount: this._state.profilePage.draftPost.likeCount
+        })
+
+        this._state.profilePage.draftPost = {
+            id: 0,
+            message: "",
+            likeCount: 0
+        }
+        this._callSubscriber()
+    },
+
+    draftPostUpdate(newDraftPost) {
+        this._state.profilePage.draftPost.message = newDraftPost
+        this._callSubscriber()
     },
     subscribe(observer) {
-        this.renderAll = observer
+        this._callSubscriber = observer
     },
+
+
+
     getMessagesPage() {
         return this._state.messagesPage
     },

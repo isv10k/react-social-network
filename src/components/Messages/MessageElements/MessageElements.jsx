@@ -21,16 +21,14 @@ const MessageElements = (props) => {
 
 
     function addMessage() {
-        if (props.store.getDraftMessage().message !== '')
-            
-            props.store.addMessage()
-            debugger;
+        if (props.draftMessage.message !== '')
+            props.addMessage()
         newMessage.current.focus()
     }
 
     function draftMessageChange() {
         // console.log(props.draftMessage.message)
-        props.store.draftMessageUpdate({
+        props.draftMessageUpdate({
             message: newMessage.current.value,
             dialogId: props.dialogId,
             messageAuthor: 1,
@@ -46,7 +44,7 @@ const MessageElements = (props) => {
                 {messages}
             </div>
             <div className={s.textArea}>
-                <textarea ref={newMessage} placeholder="Enter your message" rows="5" cols="50" onChange={draftMessageChange} value={props.store.getDraftMessage().message}/>
+                <textarea ref={newMessage} placeholder="Enter your message" rows="5" cols="50" onChange={draftMessageChange} value={props.draftMessage.message}/>
             </div>
             <div>
                 <button 

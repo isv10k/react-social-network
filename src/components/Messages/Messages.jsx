@@ -40,7 +40,13 @@ const Messages = (props) => {
                 <Route
                     path={'/messages/' + dialog.id}
                     render={() => (
-                        <MessageElements messages={dialog.messages} store={props.store} dialogId={dialog.id}/>
+                        <MessageElements
+                            messages={dialog.messages}
+                            addMessage={props.addMessage}
+                            draftMessageUpdate={props.draftMessageUpdate}
+                            dialogId={dialog.id}
+                            draftMessage={props.state.draftMessage}
+                        />
                     )}
                     key={dialog.id} 
                 />
