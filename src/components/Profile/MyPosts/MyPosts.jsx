@@ -1,19 +1,19 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
+import {actionCreateAddPost, actionCreateDraftPostUpdate} from '../../../redux/state'
 
 const MyPosts = (props) => {
 
-    let newPost = React.createRef()
-
-    function draftPostChange() {
-        props.draftPostUpdate(newPost.current.value)
+    const draftPostChange = (e) => {
+        let changedPost = e.target.value
+        props.dispatch(actionCreateDraftPostUpdate(changedPost))
     }
 
-    function addNewPost() {
+    const addNewPost = (e) => {
         if (props.draftPost.message !== '')
-            props.addPost()
-        newPost.current.focus()
+            props.dispatch(actionCreateAddPost())
+        e.target.focus()
     }
 
     return (
@@ -21,8 +21,8 @@ const MyPosts = (props) => {
         <div className={s.postArea}>
             <p>my posts</p>
             <div>
-                <textarea ref={newPost} onChange={draftPostChange} value={props.draftPost.message}
-                          placeholder="Enter new post here" rows="5" cols="50"></textarea>
+                <textarea onChange={draftPostChange} value={props.draftPost.message}
+                          placeholder="Enter new post here" rows="5" cols="50"/>
             </div>
             <div>
                 <button onClick={addNewPost}>New Post</button>

@@ -42,8 +42,7 @@ const Messages = (props) => {
                     render={() => (
                         <MessageElements
                             messages={dialog.messages}
-                            addMessage={props.addMessage}
-                            draftMessageUpdate={props.draftMessageUpdate}
+                            dispatch={props.dispatch}
                             dialogId={dialog.id}
                             draftMessage={props.state.draftMessage}
                         />

@@ -11,10 +11,7 @@ export let renderAll = () => {
     ReactDOM.render(
         <React.StrictMode>
             <App state={store.getState()}
-                 addMessage={store.addMessage.bind(store)}
-                 draftMessageUpdate={store.draftMessageUpdate.bind(store)}
-                 addPost={store.addPost.bind(store)}
-                 draftPostUpdate={store.draftPostUpdate.bind(store)}
+                 dispatch={store.dispatch.bind(store)}
             />
         </React.StrictMode>,
         document.getElementById('root')

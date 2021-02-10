@@ -2,59 +2,47 @@ import React from 'react';
 import s from './../Messages.module.css';
 import MessageItem from '../MessageItem/MessageItem'
 
-
+import {actionCreateAddMessage, actionCreateDraftMessageUpdate} from './../../../redux/state'
 
 const MessageElements = (props) => {
 
-    // let messageElements = props.map(message => <MessageItem
-    //     message={message.message}
-    //     id={message.id}
-    //     key={message.id}
-    //     timeStamp={message.timeStamp}
-    //     dialogId={message.dialogId}
-    //     messageAuthor={message.messageAuthor}
-    // />)
-
-    let newMessage = React.createRef();
-
-   
-
-
-    function addMessage() {
+    const addMessage = (e) => {
         if (props.draftMessage.message !== '')
-            props.addMessage()
-        newMessage.current.focus()
+            props.dispatch(actionCreateAddMessage())
+        e.target.focus()
     }
 
-    function draftMessageChange() {
+    const draftMessageChange = (e) => {
         // console.log(props.draftMessage.message)
-        props.draftMessageUpdate({
-            message: newMessage.current.value,
+        let changedMessage = {
+            message: e.target.value,
             dialogId: props.dialogId,
             messageAuthor: 1,
             timeStamp: new Date()
-        })
+        }
+        props.dispatch(actionCreateDraftMessageUpdate(changedMessage))
     }
-    
-    
-    let messages = props.messages.map((message) => <MessageItem message={message.message} messageAuthor={message.messageAuthor} key={message.id} />);
+
+    let messages = props.messages.map((message) => <MessageItem message={message.message}
+                                                                messageAuthor={message.messageAuthor}
+                                                                key={message.id}/>);
     return (
         <>
             <div className={s.messageField}>
                 {messages}
             </div>
             <div className={s.textArea}>
-                <textarea ref={newMessage} placeholder="Enter your message" rows="5" cols="50" onChange={draftMessageChange} value={props.draftMessage.message}/>
+                <textarea placeholder="Enter your message" rows="5" cols="50"
+                          onChange={draftMessageChange} value={props.draftMessage.message}/>
             </div>
             <div>
-                <button 
-                onClick={addMessage}>
+                <button
+                    onClick={addMessage}>
                     Send
                 </button>
             </div>
         </>
     )
-
 }
 
 export default MessageElements;
