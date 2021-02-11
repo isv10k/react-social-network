@@ -2,7 +2,7 @@ import React from 'react';
 import s from './../Messages.module.css';
 import MessageItem from '../MessageItem/MessageItem'
 
-import {actionCreateAddMessage, actionCreateDraftMessageUpdate} from './../../../redux/state'
+import {actionCreateAddMessage, actionCreateDraftMessageUpdate} from './../../../redux/message-reducer'
 
 const MessageElements = (props) => {
 
