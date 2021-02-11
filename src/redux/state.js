@@ -39,7 +39,6 @@ let store = {
                 timeStamp: ""
             }
         },
-
     },
     _callSubscriber() {
     },

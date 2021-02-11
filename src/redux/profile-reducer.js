@@ -1,6 +1,18 @@
 const ADD_POST = "ADD-POST"
 const DRAFT_POST_UPDATE = "DRAFT-POST-UPDATE"
 
+let initialState = {
+    posts: [
+        {id: 1, message: "hey yo", likeCount: 15},
+        {id: 2, message: "it is happening", likeCount: 1},
+    ],
+    draftPost: {
+        id: 0,
+        message: '',
+        likeCount: 0,
+    }
+}
+
 const addPost = (state) => {
     let newId = state.posts[state.posts.length - 1].id + 1
     state.posts.push({
@@ -22,7 +34,7 @@ const draftPostUpdate = (state, newDraftPost) => {
     return state
 }
 
-const profileReducer = (state, action) => {
+const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             return addPost(state)
@@ -30,7 +42,8 @@ const profileReducer = (state, action) => {
         case DRAFT_POST_UPDATE:
             return draftPostUpdate(state, action.newDraftPost)
 
-        default: return state
+        default:
+            return state
     }
 }
 
@@ -39,6 +52,7 @@ export function actionCreateAddPost() {
         type: ADD_POST
     }
 }
+
 export function actionCreateDraftPostUpdate(newPost) {
     return {
         type: DRAFT_POST_UPDATE,
