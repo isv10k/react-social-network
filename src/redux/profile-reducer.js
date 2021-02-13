@@ -14,31 +14,41 @@ let initialState = {
 }
 
 const addPost = (state) => {
-    let newId = state.posts[state.posts.length - 1].id + 1
-    state.posts.push({
+
+    let stateCopy = {...state}
+    stateCopy.posts = [...state.posts]
+
+    let newId = stateCopy.posts[stateCopy.posts.length - 1].id + 1
+    stateCopy.posts.push({
         id: newId,
         message: state.draftPost.message,
         likeCount: state.draftPost.likeCount
     })
 
-    state.draftPost = {
+    stateCopy.draftPost = {
         id: 0,
         message: "",
         likeCount: 0
     }
-    return state
+    return stateCopy
 }
 
 const draftPostUpdate = (state, newDraftPost) => {
-    state.draftPost.message = newDraftPost
-    return state
+    let stateCopy = {...state}
+    stateCopy.draftPost = {...state.draftPost}
+    stateCopy.draftPost.message = newDraftPost
+    return stateCopy
 }
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_POST:
-            return addPost(state)
-
+        case ADD_POST: {
+            if (state.draftPost.message !== '')
+                return addPost(state)
+            else
+                return state
+            break;
+        }
         case DRAFT_POST_UPDATE:
             return draftPostUpdate(state, action.newDraftPost)
 

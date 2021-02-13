@@ -16,18 +16,19 @@ const App = (props) => {
             <div className='app-wrapper'>
                 <Header />
                 <Navbar />
-                <Sidebar state={props.state.messagesPage.contacts}/>
+                {/*<Sidebar />*/}
                 <div className='app-wrapper-content'>
-                    <Route
-                        path='/messages'
-                        render={() => (
-                            <Messages state={props.state.messagesPage} dispatch={props.dispatch}/>
-                        )}
-                    />
+                    {/*<Route*/}
+                    {/*    path='/messages'*/}
+                    {/*    render={() => (*/}
+                    {/*        <Messages state={props.state.messagesPage} dispatch={props.dispatch}/>*/}
+                    {/*    )}*/}
+                    {/*/>*/}
                     <Route
                         path='/profile'
                         render={() => (
-                            <Profile state={props.state.profilePage} dispatch={props.dispatch}/>
+                            <Profile />
+                            // <Profile state={props.state.profilePage} dispatch={props.dispatch}/>
                         )}
                     />
                     {/* <Route exact path='/messages' component={Messages} /> */}

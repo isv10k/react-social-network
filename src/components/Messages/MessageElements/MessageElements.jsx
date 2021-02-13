@@ -9,7 +9,7 @@ const MessageElements = (props) => {
     const addMessage = (e) => {
         if (props.draftMessage.message !== '')
             props.dispatch(actionCreateAddMessage())
-        e.target.focus()
+        document.getElementById('messageTextArea').focus()
     }
 
     const draftMessageChange = (e) => {
@@ -32,7 +32,7 @@ const MessageElements = (props) => {
                 {messages}
             </div>
             <div className={s.textArea}>
-                <textarea placeholder="Enter your message" rows="5" cols="50"
+                <textarea id="messageTextArea" placeholder="Enter your message" rows="5" cols="50"
                           onChange={draftMessageChange} value={props.draftMessage.message}/>
             </div>
             <div>

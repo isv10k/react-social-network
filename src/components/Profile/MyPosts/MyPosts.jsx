@@ -1,27 +1,23 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
-import {actionCreateAddPost, actionCreateDraftPostUpdate} from '../../../redux/profile-reducer'
 
 const MyPosts = (props) => {
 
     const draftPostChange = (e) => {
-        let changedPost = e.target.value
-        props.dispatch(actionCreateDraftPostUpdate(changedPost))
+        props.draftPostUpdate(e)
     }
 
     const addNewPost = (e) => {
-        if (props.draftPost.message !== '')
-            props.dispatch(actionCreateAddPost())
-        e.target.focus()
+        props.addNewPost(e)
+        document.getElementById('postTextArea').focus()
     }
 
     return (
-
         <div className={s.postArea}>
             <p>my posts</p>
             <div>
-                <textarea onChange={draftPostChange} value={props.draftPost.message}
+                <textarea id="postTextArea" onChange={draftPostChange} value={props.draftPost.message}
                           placeholder="Enter new post here" rows="5" cols="50"/>
             </div>
             <div>
