@@ -1,9 +1,10 @@
 import React from 'react';
-import s from './../Messages.module.css';
+import s from '../Messages.module.css';
 
+// messageAuthor
+// message
 
-
-const MessageItem = (props) => {
+const MessagesItem = (props) => {
     if (props.messageAuthor !== 1) {
         return (
             <div className={s.messageItem}>
@@ -20,4 +21,4 @@ const MessageItem = (props) => {
 
 }
 
-export default MessageItem;
+export default MessagesItem;

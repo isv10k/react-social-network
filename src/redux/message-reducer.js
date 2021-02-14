@@ -1,5 +1,6 @@
 const ADD_MESSAGE = "ADD-MESSAGE"
 const DRAFT_MESSAGE_UPDATE = "DRAFT-MESSAGE-UPDATE"
+// const DRAFT_MESSAGE_DIALOG_ID = "DRAFT-MESSAGE-DIALOG-ID"
 
 let initialState = {
     contacts: [
@@ -21,39 +22,52 @@ let initialState = {
         id: 0,
         message: "",
         dialogId: 0,
-        messageAuthor: 0,
+        messageAuthor: 1,
         timeStamp: ""
     }
 }
 
 const addMessage = (state) => {
-    let newId = state.messages[state.messages.length - 1].id + 1;
-    state.messages.push({
+    let newId = state.messages[state.messages.length - 1].id + 1
+
+    let stateCopy = {...state}
+    stateCopy.messages = [...state.messages]
+    stateCopy.draftMessage = {...state.draftMessage}
+
+    stateCopy.messages.push({
         id: newId,
-        message: state.draftMessage.message,
-        dialogId: state.draftMessage.dialogId,
-        messageAuthor: state.draftMessage.messageAuthor,
+        message: stateCopy.draftMessage.message,
+        dialogId: stateCopy.draftMessage.dialogId,
+        messageAuthor: stateCopy.draftMessage.messageAuthor,
         timeStamp: new Date(),
     })
 
-    state.draftMessage = {
+    stateCopy.draftMessage = {
         id: 0,
         message: "",
         dialogId: 0,
-        messageAuthor: 0,
+        messageAuthor: 1,
         timeStamp: ""
     }
-    return state
+    return stateCopy
 }
 const draftMessageUpdate = (state, newDraftMessage) => {
-    state.draftMessage = newDraftMessage
-    return state
+    let stateCopy = {...state}
+    stateCopy.draftMessage = {...state.draftMessage}
+    stateCopy.draftMessage.message = newDraftMessage.message
+    stateCopy.draftMessage.dialogId = Number(newDraftMessage.dialogId)
+    stateCopy.draftMessage.timeStamp = new Date()
+    return stateCopy
 }
 
 const messageReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_MESSAGE:
-            return addMessage(state)
+        case ADD_MESSAGE: {
+            if (state.draftMessage.message !== '')
+                return addMessage(state)
+            else
+                return state
+        }
 
         case DRAFT_MESSAGE_UPDATE:
             return draftMessageUpdate(state, action.newDraftMessage)

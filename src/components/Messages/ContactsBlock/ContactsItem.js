@@ -1,9 +1,12 @@
-import React from 'react';
-import s from './../Messages.module.css';
-import { NavLink } from 'react-router-dom';
+import React from 'react'
+import s from '../Messages.module.css'
+import { NavLink } from 'react-router-dom'
 
+// id
+// profilePicture
+// name
 
-const Contact = (props) => {
+const ContactsItem = (props) => {
     let path = "/messages/" + props.id;
     return (
         <div className={s.contact}>
@@ -16,4 +19,4 @@ const Contact = (props) => {
 }
 
 
-export default Contact;
+export default ContactsItem;

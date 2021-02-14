@@ -47,7 +47,6 @@ const profileReducer = (state = initialState, action) => {
                 return addPost(state)
             else
                 return state
-            break;
         }
         case DRAFT_POST_UPDATE:
             return draftPostUpdate(state, action.newDraftPost)

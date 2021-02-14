@@ -1,10 +1,16 @@
 .dialogs {
+    width: 100%;
     display: grid;
-    grid-template-columns: 2fr 10fr;
+    grid-template-columns: repeat(2, 200px 1fr);
+    grid-template-rows: 9fr 3fr;
+    grid-template-areas:
+        "contacts messages"
+        ". text-input";
 }
 
 .contacts {
     padding: 20px;
+    grid-area: contacts;
 }
 
 .contact {
@@ -22,6 +28,12 @@
 
 .messages {
     padding: 20px;
+    grid-area: messages;
+}
+
+.textArea {
+    padding-left: 20px;
+    grid-area: text-input;
 }
 
 .messageItem {
@@ -35,9 +47,5 @@
     text-align: right;
 }
 
-.messageField {
-    
-    
-}
 
 

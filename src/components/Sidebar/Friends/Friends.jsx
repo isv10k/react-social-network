@@ -3,13 +3,7 @@ import Friend from './Friend/Friend'
 
 const Friends = (props) => {
 
-    let chosenFriends = [
-        props.state[1],
-        props.state[2],
-        props.state[3],
-    ]
-    
-    let sidebarFriends = chosenFriends.map(
+    let sidebarFriends = props.friends.map(
         friend => {
             return (
                 <Friend profilePicture={friend.profilePicture} name={friend.name} key={friend.id} id={friend.id}/>
