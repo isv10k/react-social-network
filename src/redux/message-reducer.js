@@ -30,9 +30,11 @@ let initialState = {
 const addMessage = (state) => {
     let newId = state.messages[state.messages.length - 1].id + 1
 
-    let stateCopy = {...state}
-    stateCopy.messages = [...state.messages]
-    stateCopy.draftMessage = {...state.draftMessage}
+    let stateCopy = {
+        ...state,
+        messages: [...state.messages],
+        draftMessage: {...state.draftMessage}
+    }
 
     stateCopy.messages.push({
         id: newId,
@@ -52,8 +54,10 @@ const addMessage = (state) => {
     return stateCopy
 }
 const draftMessageUpdate = (state, newDraftMessage) => {
-    let stateCopy = {...state}
-    stateCopy.draftMessage = {...state.draftMessage}
+    let stateCopy = {
+        ...state,
+        draftMessage: {...state.draftMessage}
+    }
     stateCopy.draftMessage.message = newDraftMessage.message
     stateCopy.draftMessage.dialogId = Number(newDraftMessage.dialogId)
     stateCopy.draftMessage.timeStamp = new Date()

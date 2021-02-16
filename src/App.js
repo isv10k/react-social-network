@@ -10,6 +10,7 @@ import Settings from './components/Settings/Settings';
 import { Route } from 'react-router-dom';
 import SidebarContainer from "./components/Sidebar/SidebarContainer";
 import MessagesPage from "./components/Messages/MessagesPage";
+import UsersContainer from "./components/Users/UsersContainer";
 
 
 const App = (props) => {
@@ -38,6 +39,7 @@ const App = (props) => {
                     <Route exact path='/news' component={News} />
                     <Route exact path='/music' component={Music} />
                     <Route exact path='/settings' component={Settings} />
+                    <Route exact path='/users' component={UsersContainer} />
                 </div>
             </div>
     );

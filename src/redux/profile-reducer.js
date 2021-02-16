@@ -15,8 +15,10 @@ let initialState = {
 
 const addPost = (state) => {
 
-    let stateCopy = {...state}
-    stateCopy.posts = [...state.posts]
+    let stateCopy = {
+        ...state,
+        posts: [...state.posts]
+    }
 
     let newId = stateCopy.posts[stateCopy.posts.length - 1].id + 1
     stateCopy.posts.push({
@@ -34,8 +36,10 @@ const addPost = (state) => {
 }
 
 const draftPostUpdate = (state, newDraftPost) => {
-    let stateCopy = {...state}
-    stateCopy.draftPost = {...state.draftPost}
+    let stateCopy = {
+        ...state,
+        draftPost: {...state.draftPost}
+    }
     stateCopy.draftPost.message = newDraftPost
     return stateCopy
 }
