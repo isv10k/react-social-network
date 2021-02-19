@@ -1,6 +1,6 @@
 import React from 'react'
 import s from '../Messages.module.css'
-import { NavLink } from 'react-router-dom'
+import {NavLink, useLocation} from 'react-router-dom'
 
 // id
 // profilePicture
@@ -8,13 +8,16 @@ import { NavLink } from 'react-router-dom'
 
 const ContactsItem = (props) => {
     let path = "/messages/" + props.id;
+    let activeCheck = useLocation().pathname === path
     return (
-        <div className={s.contact}>
-            <NavLink to={path} activeClassName={s.active}>
-                <img src={props.profilePicture} alt={props.name}/>
-                {props.name}
+
+            <NavLink className={activeCheck ? s.contactLinkActive : s.contactLink} to={path}>
+                <div className={s.contact}>
+                    <img className={s.contactImg} src={props.profilePicture} alt={props.name}/>
+                    <span className={s.contactName}>{props.name}</span>
+                </div>
             </NavLink>
-        </div>
+
     )
 }
 

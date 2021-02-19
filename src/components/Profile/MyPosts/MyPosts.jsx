@@ -15,7 +15,7 @@ const MyPosts = (props) => {
 
     return (
         <div className={s.postArea}>
-            <p>my posts</p>
+            <p>My posts</p>
             <div>
                 <textarea id="postTextArea" onChange={draftPostChange} value={props.draftPost.message}
                           placeholder="Enter new post here" rows="5" cols="50"/>

@@ -3,3 +3,31 @@
     padding: 10px;
 }
 
+.item {
+    color: #2f496e;
+    padding: 10px;
+    border-style: inset;
+    border-color: #2988bc;
+    margin-top: 10px;
+    width: 500px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.postMessage {
+    padding-left: 10px;
+    margin-right: auto;
+}
+.likes {
+    align-self: flex-end;
+}
+

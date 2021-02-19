@@ -4,12 +4,15 @@ import s from './Navbar.module.css';
 
 const Navbar = () => {
     return (
-        <nav>
+        <nav className={s.nav}>
             <div className={s.item}>
-                <NavLink to="/profile" activeClassName={s.active}>Profiles</NavLink>
+                <NavLink to="/profile" activeClassName={s.active}>Profile</NavLink>
             </div>
             <div className={s.item}>
                 <NavLink to="/messages" activeClassName={s.active}>Messages</NavLink>
+            </div>
+            <div className={s.item}>
+                <NavLink to='/users' activeClassName={s.active}>Users</NavLink>
             </div>
             <div className={`${s.item} ${s.active}`}>
                 <NavLink to="/news" activeClassName={s.active}>News</NavLink>

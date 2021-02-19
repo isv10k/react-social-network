@@ -37,7 +37,6 @@ const Users = (props) => {
     const axios = require('axios')
     axios.get('https://social-network.samuraijs.com/api/1.1/users').then(response => {
         console.log(response)
-        debugger
     })
 
     let users = props.users.map(user => {

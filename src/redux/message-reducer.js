@@ -4,10 +4,10 @@ const DRAFT_MESSAGE_UPDATE = "DRAFT-MESSAGE-UPDATE"
 
 let initialState = {
     contacts: [
-        {id: 1, name: "Sergey", profilePicture: "https://i.pravatar.cc/20?img=59"},
-        {id: 2, name: "Sasha", profilePicture: "https://i.pravatar.cc/20?img=51"},
-        {id: 3, name: "Vasya", profilePicture: "https://i.pravatar.cc/20?img=45"},
-        {id: 4, name: "Petya", profilePicture: "https://i.pravatar.cc/20?img=40"},
+        {id: 1, name: "Sergey", profilePicture: "https://i.pravatar.cc/50?img=1"},
+        {id: 2, name: "Sasha", profilePicture: "https://i.pravatar.cc/50?img=51"},
+        {id: 3, name: "Vasya", profilePicture: "https://i.pravatar.cc/50?img=45"},
+        {id: 4, name: "Petya", profilePicture: "https://i.pravatar.cc/50?img=40"},
     ],
     messages: [
         {id: 1, message: "Yo", dialogId: 2, messageAuthor: 2, timeStamp: '1'},

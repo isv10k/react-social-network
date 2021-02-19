@@ -2,21 +2,25 @@ import React from 'react';
 import s from './ProfileInfo.module.css';
 
 const ProfileInfo = () => {
-  return (
-    <>
-      <div>
-        <img className={s.backImg} src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.sciencealert.com%2Fimages%2Farticles%2Fprocessed%2F1shutterstock_336744542_1024.jpg&f=1&nofb=1' alt='backImg' />
-      </div>
-      <div className={s.avaBio}>
-        <img className={s.ava} src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ZNF3UzwEu_aKaw6Jh8wdrwHaNK%26pid%3DApi&f=1" alt='ava' />
-        <div className={s.bio}>
-          <p>Name: KonVysh</p>
-          <p>City: Che</p>
-          <p>Status: QO</p>
-        </div>
-      </div>
-    </>
-  );
+    return (
+        <>
+            <div>
+                <img className={s.bgImg}
+                     src='https://littleletterslinked.com/wp-content/uploads/2020/06/shutterstock_387166810-2200x880-1-1536x614.jpg'
+                     alt='backImg'/>
+            </div>
+            <div className={s.profileContent}>
+                <img className={s.profilePhoto}
+                     src="https://www.pngitem.com/pimgs/m/132-1324928_sasuke-uchiha-png-download-stiker-sasuke-uchiha-transparent.png"
+                     alt='name'/>
+                <div className={s.profileData}>
+                    <p><span>Name:</span> lem0n</p>
+                    <p><span>City:</span> Che</p>
+                    <p><span>Status:</span>【・ヘ・?】</p>
+                </div>
+            </div>
+        </>
+    );
 }
 
 export default ProfileInfo;

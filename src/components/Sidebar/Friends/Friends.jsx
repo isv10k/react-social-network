@@ -1,4 +1,3 @@
-import s from './Friends.module.css';
 import Friend from './Friend/Friend'
 
 const Friends = (props) => {
@@ -12,9 +11,9 @@ const Friends = (props) => {
     )
 
   return (
-    <div  className={s.friendsPlate}>
-        {sidebarFriends}        
-    </div>
+      <>
+        {sidebarFriends}
+      </>
   );
 }
 

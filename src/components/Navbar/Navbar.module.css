@@ -1,18 +1,22 @@
-nav {
+.nav {
     grid-area: n;
-    background-color: green;
+    background-color: #2988bc;
 }
 
 .item {
-    color: white;
     padding: 10px;
+    border-bottom: #ed8c72;
+    border-bottom-style: inset;
+    border-bottom-width: thin;
+    border-bottom-left-radius: 20px;
 }
 
 .item a {
     text-decoration: none;
+    color: aliceblue;
 }
 
 .item a.active {
-    font-weight: bolder;
-    color: gold;
+    font-weight: 700;
+    color: #f4eade;
 }

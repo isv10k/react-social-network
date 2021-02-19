@@ -1,7 +1,8 @@
 .dialogs {
     width: 100%;
+    max-width: 700px;
     display: grid;
-    grid-template-columns: repeat(2, 200px 1fr);
+    grid-template-columns: 200px 1fr;
     grid-template-rows: 9fr 3fr;
     grid-template-areas:
         "contacts messages"
@@ -9,42 +10,71 @@
 }
 
 .contacts {
-    padding: 20px;
+    padding: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
     grid-area: contacts;
+    border-style: inset;
+    border-radius: 5px;
+    border-color: #2988bc;
 }
 
 .contact {
     padding: 10px;
+    display: flex;
 }
 
-.contact.active {
-    color: gold;
-}
 
-.contact a{
+.contactLink{
     text-decoration: none;
-    color:indigo;
+    color: #2f496e;
+    display: flex;
+}
+.contactLinkActive {
+    text-decoration: none;
+    color: aliceblue;
+
+    display: flex;
+    background-color: #2f496e;
+    border-radius: 5px;
+}
+
+
+.contactImg {
+    border-style: inset;
+    border-color: #ed8c72;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.contactName {
+    align-self: center;
+    padding-left: 10px;
 }
 
 .messages {
-    padding: 20px;
+    padding: 10px;
     grid-area: messages;
+    margin-top: 15px;
 }
 
 .textArea {
-    padding-left: 20px;
+    padding-left: 10px;
     grid-area: text-input;
 }
 
 .messageItem {
     padding: 10px;
     margin-bottom: 10px;
-    background-color: hotpink;
+    background-color: #2f496e;
+    border-radius: 5px;
+    color: aliceblue;
     
 }
 
 .yourMessage {
     text-align: right;
+    background-color: #2988bc;
 }
 
 
