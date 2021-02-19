@@ -59,7 +59,7 @@ const draftMessageUpdate = (state, newDraftMessage) => {
         draftMessage: {...state.draftMessage}
     }
     stateCopy.draftMessage.message = newDraftMessage.message
-    stateCopy.draftMessage.dialogId = Number(newDraftMessage.dialogId)
+    stateCopy.draftMessage.dialogId = newDraftMessage.dialogId
     stateCopy.draftMessage.timeStamp = new Date()
     return stateCopy
 }

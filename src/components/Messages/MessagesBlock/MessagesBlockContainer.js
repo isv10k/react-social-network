@@ -9,6 +9,7 @@ const mapStateToProps = (state, {match}) => {
     const {
         params: {dialogId},
     } = match;
+    debugger
 
     let correspondingMessages = state.messagesPage.messages.filter(
         message => message.dialogId === Number(dialogId)
@@ -17,7 +18,7 @@ const mapStateToProps = (state, {match}) => {
     return {
         messages: correspondingMessages,
         draftMessage: state.messagesPage.draftMessage.message,
-        dialogId: dialogId
+        dialogId: Number(dialogId)
     }
 }
 

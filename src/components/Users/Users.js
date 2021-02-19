@@ -1,35 +1,44 @@
+
 const Users = (props) => {
+
     if (props.users.length === 0) {
-        props.setUsers([
-            {
-                id: 1,
-                followed: true,
-                name: 'Dmitry',
-                status: 'pravda zhivite po pravde',
-                country: 'Russia',
-                city: 'Moscow',
-                avatarUrl: 'https://kinoafisha.ua/upload/persons/442/src_1416822098nagiev-dmitriy.jpg'
-            },
-            {
-                id: 2,
-                followed: true,
-                name: 'Kurwa',
-                status: 'pravda zhivite po pravde',
-                country: 'England',
-                city: 'London',
-                avatarUrl: 'https://kinoafisha.ua/upload/persons/442/src_1416822098nagiev-dmitriy.jpg'
-            },
-            {
-                id: 3,
-                followed: false,
-                name: 'Vasya',
-                status: 'pravda zhivite po pravde',
-                country: 'Belarus',
-                city: 'Minsk',
-                avatarUrl: 'https://kinoafisha.ua/upload/persons/442/src_1416822098nagiev-dmitriy.jpg'
-            }
-        ])
+        // props.setUsers([
+        //     {
+        //         id: 1,
+        //         followed: true,
+        //         name: 'Dmitry',
+        //         status: 'pravda zhivite po pravde',
+        //         country: 'Russia',
+        //         city: 'Moscow',
+        //         avatarUrl: 'https://kinoafisha.ua/upload/persons/442/src_1416822098nagiev-dmitriy.jpg'
+        //     },
+        //     {
+        //         id: 2,
+        //         followed: true,
+        //         name: 'Kurwa',
+        //         status: 'pravda zhivite po pravde',
+        //         country: 'England',
+        //         city: 'London',
+        //         avatarUrl: 'https://kinoafisha.ua/upload/persons/442/src_1416822098nagiev-dmitriy.jpg'
+        //     },
+        //     {
+        //         id: 3,
+        //         followed: false,
+        //         name: 'Vasya',
+        //         status: 'pravda zhivite po pravde',
+        //         country: 'Belarus',
+        //         city: 'Minsk',
+        //         avatarUrl: 'https://kinoafisha.ua/upload/persons/442/src_1416822098nagiev-dmitriy.jpg'
+        //     }
+        // ])
+
+
     }
+    const axios = require('axios')
+    axios.get('https://social-network.samuraijs.com/api/1.1/users').then(response => {
+        console.log(response)
+        debugger
+    })
 
     let users = props.users.map(user => {
 

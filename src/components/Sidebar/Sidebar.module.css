@@ -2,3 +2,8 @@
     grid-area: s;
     background-color: green;
 }
+
+.active {
+    font-weight: bolder;
+    color: gold;
+}
