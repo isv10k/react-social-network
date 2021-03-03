@@ -34,7 +34,9 @@ const App = () => {
                     <Route exact path='/news' component={News} />
                     <Route exact path='/music' component={Music} />
                     <Route exact path='/settings' component={Settings} />
-                    <Route exact path='/users' component={UsersContainer} />
+                    <Route exact path='/users'>
+                        <UsersContainer />
+                    </Route>
                 </div>
             </div>
     );
