@@ -1,0 +1,12 @@
+{
+    // These are all my auto-save configs
+    "editor.formatOnSave": true,
+
+    "prettier.bracketSpacing": true,
+    "prettier.quoteProps": "as-needed",
+    //"prettier.requirePragma": true,
+    "prettier.semi": true,
+    "prettier.singleQuote": true,
+    "prettier.tabWidth": 4
+    //"prettier.insertPragma": true
+}
