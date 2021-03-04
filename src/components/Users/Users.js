@@ -1,5 +1,6 @@
 import s from './Users.module.css';
 import defaultAvatar from '../../assets/images/avatar.png';
+import Preloader from '../common/Preloader/Preloader';
 
 const Users = (props) => {
     const amountOfPages = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -10,6 +11,7 @@ const Users = (props) => {
     return (
         <div className={s.usersPage}>
             <h1>Users</h1>
+            {props.isFetching && <Preloader />}
             <div>
                 {pagination.map((page) => (
                     <span

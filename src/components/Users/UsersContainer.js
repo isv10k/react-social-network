@@ -7,16 +7,19 @@ import {
     onUnFollowAC,
     setCurrentPageAC,
     setTotalUsersCountAC,
+    toggleIsFetchingAC,
 } from '../../redux/users-reducer';
 import Users from './Users';
 
 class UsersContainer extends React.Component {
     componentDidMount = () => {
+        this.props.toggleIsFetching(true);
         axios
             .get(
                 `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`
             )
             .then((response) => {
+                this.props.toggleIsFetching(false);
                 this.props.setUsers(response.data.items);
                 this.props.setTotalUsersCount(response.data.totalCount);
             });
@@ -24,11 +27,15 @@ class UsersContainer extends React.Component {
 
     changeCurrentPage = (page) => {
         this.props.setCurrentPage(page);
+        this.props.toggleIsFetching(true);
         axios
             .get(
                 `https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`
             )
-            .then((response) => this.props.setUsers(response.data.items));
+            .then((response) => {
+                this.props.toggleIsFetching(false);
+                this.props.setUsers(response.data.items);
+            });
     };
 
     render() {
@@ -41,6 +48,7 @@ class UsersContainer extends React.Component {
                 changeCurrentPage={this.changeCurrentPage}
                 onUnFollow={this.props.onUnFollow}
                 onFollow={this.props.onFollow}
+                isFetching={this.props.isFetching}
             />
         );
     }
@@ -52,6 +60,7 @@ function mapStateToProps(state) {
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
+        isFetching: state.usersPage.isFetching,
     };
 }
 
@@ -71,6 +80,9 @@ function mapDispatchToProps(dispatch) {
         },
         setTotalUsersCount: (totalUsersCount) => {
             return dispatch(setTotalUsersCountAC(totalUsersCount));
+        },
+        toggleIsFetching: (isFetching) => {
+            return dispatch(toggleIsFetchingAC(isFetching));
         },
     };
 }
