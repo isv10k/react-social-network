@@ -5,11 +5,11 @@ import Post from './Post/Post';
 const MyPosts = (props) => {
 
     const draftPostChange = (e) => {
-        props.draftPostUpdate(e)
+        props.draftPostUpdate(e.target.value)
     }
 
     const addNewPost = (e) => {
-        props.addNewPost(e)
+        props.addPost(e)
         document.getElementById('postTextArea').focus()
     }
 

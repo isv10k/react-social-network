@@ -46,6 +46,7 @@
 
 .pagination {
     padding: 5px;
+    cursor: pointer;
 }
 
 .active {

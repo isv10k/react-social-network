@@ -1,11 +1,13 @@
 import s from './Users.module.css';
 import defaultAvatar from '../../assets/images/avatar.png';
 import Preloader from '../common/Preloader/Preloader';
+import { NavLink } from 'react-router-dom';
 
 const Users = (props) => {
-    const amountOfPages = Math.ceil(props.totalUsersCount / props.pageSize);
+    // const amountOfPages = Math.ceil(props.totalUsersCount / props.pageSize);
     let pagination = [];
-    for (let i = 1; i <= amountOfPages; i++) {
+    // 10 instead of amountOfPages because too many users by now, TODO: pagination component
+    for (let i = 1; i <= 10; i++) {
         pagination.push(i);
     }
     return (
@@ -29,11 +31,13 @@ const Users = (props) => {
             {props.users.map((user) => (
                 <div className={s.userCard} key={user.id}>
                     <div className={s.userPhotoFollow}>
-                        <img
-                            src={user.photos.small ?? defaultAvatar}
-                            alt={user.name}
-                            className={s.userPhoto}
-                        />
+                        <NavLink to={`/profile/${user.id}`}>
+                            <img
+                                src={user.photos.small ?? defaultAvatar}
+                                alt={user.name}
+                                className={s.userPhoto}
+                            />
+                        </NavLink>
                         {user.followed ? (
                             <button
                                 type="button"

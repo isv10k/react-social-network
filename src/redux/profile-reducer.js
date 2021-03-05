@@ -1,76 +1,90 @@
-const ADD_POST = "ADD-POST"
-const DRAFT_POST_UPDATE = "DRAFT-POST-UPDATE"
+const ADD_POST = 'ADD-POST';
+const DRAFT_POST_UPDATE = 'DRAFT-POST-UPDATE';
+const SET_USER_PROFILE = 'SET-USER-PROFILE';
+const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
 
 let initialState = {
     posts: [
-        {id: 1, message: "hey yo", likeCount: 15},
-        {id: 2, message: "it is happening", likeCount: 1},
+        { id: 1, message: 'hey yo', likeCount: 15 },
+        { id: 2, message: 'it is happening', likeCount: 1 },
     ],
     draftPost: {
         id: 0,
         message: '',
         likeCount: 0,
-    }
-}
-
-const addPost = (state) => {
-
-    let stateCopy = {
-        ...state,
-        posts: [...state.posts]
-    }
-
-    let newId = stateCopy.posts[stateCopy.posts.length - 1].id + 1
-    stateCopy.posts.push({
-        id: newId,
-        message: state.draftPost.message,
-        likeCount: state.draftPost.likeCount
-    })
-
-    stateCopy.draftPost = {
-        id: 0,
-        message: "",
-        likeCount: 0
-    }
-    return stateCopy
-}
-
-const draftPostUpdate = (state, newDraftPost) => {
-    let stateCopy = {
-        ...state,
-        draftPost: {...state.draftPost}
-    }
-    stateCopy.draftPost.message = newDraftPost
-    return stateCopy
-}
+    },
+    userProfile: null,
+    isFetching: false,
+};
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
-            if (state.draftPost.message !== '')
-                return addPost(state)
-            else
-                return state
+            if (state.draftPost.message !== '') {
+                let stateCopy = {
+                    ...state,
+                    posts: [...state.posts],
+                };
+
+                let newId = stateCopy.posts[stateCopy.posts.length - 1].id + 1;
+                stateCopy.posts.push({
+                    id: newId,
+                    message: state.draftPost.message,
+                    likeCount: state.draftPost.likeCount,
+                });
+
+                stateCopy.draftPost = {
+                    id: 0,
+                    message: '',
+                    likeCount: 0,
+                };
+                return stateCopy;
+            } else return state;
         }
-        case DRAFT_POST_UPDATE:
-            return draftPostUpdate(state, action.newDraftPost)
+        case DRAFT_POST_UPDATE: {
+            let stateCopy = {
+                ...state,
+                draftPost: { ...state.draftPost },
+            };
+            stateCopy.draftPost.message = action.newDraftPost;
+            return stateCopy;
+        }
+        case SET_USER_PROFILE: {
+            return { ...state, userProfile: action.userProfile };
+        }
+        case TOGGLE_IS_FETCHING: {
+            return { ...state, isFetching: action.isFetching };
+        }
 
         default:
-            return state
+            return state;
     }
-}
+};
 
-export function actionCreateAddPost() {
+export function addPost() {
     return {
-        type: ADD_POST
-    }
+        type: ADD_POST,
+    };
 }
 
-export function actionCreateDraftPostUpdate(newPost) {
+export function draftPostUpdate(newPost) {
     return {
         type: DRAFT_POST_UPDATE,
-        newDraftPost: newPost
-    }
+        newDraftPost: newPost,
+    };
 }
+export function setUserProfile(userProfile) {
+    return {
+        type: SET_USER_PROFILE,
+        userProfile: userProfile,
+    };
+}
+export const toggleIsFetching = (isFetching) => {
+    console.log('fetching');
+    return {
+        type: TOGGLE_IS_FETCHING,
+        isFetching: isFetching,
+    };
+};
 
-export default profileReducer
+export default profileReducer;
