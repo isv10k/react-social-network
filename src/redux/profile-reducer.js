@@ -80,7 +80,6 @@ export function setUserProfile(userProfile) {
     };
 }
 export const toggleIsFetching = (isFetching) => {
-    console.log('fetching');
     return {
         type: TOGGLE_IS_FETCHING,
         isFetching: isFetching,

@@ -4,10 +4,10 @@ import Preloader from '../common/Preloader/Preloader';
 import { NavLink } from 'react-router-dom';
 
 const Users = (props) => {
-    // const amountOfPages = Math.ceil(props.totalUsersCount / props.pageSize);
+    const amountOfPages = Math.ceil(props.totalUsersCount / props.pageSize);
     let pagination = [];
     // 10 instead of amountOfPages because too many users by now, TODO: pagination component
-    for (let i = 1; i <= 10; i++) {
+    for (let i = amountOfPages; i >= amountOfPages - 9; i--) {
         pagination.push(i);
     }
     return (
@@ -24,7 +24,7 @@ const Users = (props) => {
                             `}
                         onClick={() => props.changeCurrentPage(page)}
                     >
-                        {page}
+                        {amountOfPages - page + 1}
                     </span>
                 ))}
             </div>

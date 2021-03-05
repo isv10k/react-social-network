@@ -4,7 +4,6 @@ import s from './ProfileInfo.module.css';
 
 const ProfileInfo = (props) => {
     if (!props.userProfile) return <Preloader />;
-    console.table(props.userProfile);
     return (
         <>
             <div>
@@ -23,25 +22,29 @@ const ProfileInfo = (props) => {
                 />
                 <div className={s.profileData}>
                     <p>
-                        <span>Name:</span> {props.userProfile.fullName}
+                        <span>Name: </span>
+                        {props.userProfile.fullName}
                     </p>
                     <p>
-                        <span>About:</span> {props.userProfile.aboutMe}
+                        <span>About: </span>
+                        {props.userProfile.aboutMe}
                     </p>
                     <p>
-                        <span>Looking For A Job:</span>{' '}
+                        <span>Looking For A Job: </span>
                         {props.userProfile.lookingForAJob ? 'yep' : 'nope'}
                     </p>
                     <p>
-                        <span>Looking For A Job Details:</span>{' '}
+                        <span>Looking For A Job Details: </span>
                         {props.userProfile.lookingForAJobDescription}
                     </p>
                     <ul>
                         {Object.entries(props.userProfile.contacts).map(
-                            (entry) => {
+                            (entry, id) => {
                                 return (
-                                    <li>
-                                        <a href={entry[1]}>{entry[0]}</a>
+                                    <li key={id}>
+                                        <a target="_blank" href={entry[1]}>
+                                            {entry[0]}
+                                        </a>
                                     </li>
                                 );
                             }

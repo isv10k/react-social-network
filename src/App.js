@@ -19,7 +19,10 @@ const App = () => {
             <SidebarContainer />
             <div className="app-wrapper-content">
                 <Route path="/messages" render={() => <MessagesPage />} />
-                <Route path="/profile" render={() => <ProfileContainer />} />
+                <Route
+                    path="/profile/:userId?"
+                    render={() => <ProfileContainer />}
+                />
                 <Route exact path="/news" component={News} />
                 <Route exact path="/music" component={Music} />
                 <Route exact path="/settings" component={Settings} />
