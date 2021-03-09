@@ -10,6 +10,7 @@ class ProfileContainer extends React.Component {
         this.props.toggleIsFetching(true);
         let userId = this.props.match.params.userId;
         if (!userId) userId = 2;
+        // TODO: re render on pure profile
         axios
             .get(
                 `https://social-network.samuraijs.com/api/1.0/profile/${userId}`
