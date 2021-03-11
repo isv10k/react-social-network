@@ -43,11 +43,16 @@ const Users = (props) => {
                         {user.followed ? (
                             <button
                                 type="button"
+                                disabled={props.idsOfFollowProcess.some(
+                                    (id) => id === user.id
+                                )}
                                 onClick={() => {
+                                    props.toggleIsFollowing(true, user.id);
                                     usersAPI.unFollow(user.id).then((data) => {
                                         if (data.resultCode === 0) {
                                             props.onUnFollow(user.id);
                                         }
+                                        props.toggleIsFollowing(false, user.id);
                                     });
                                 }}
                             >
@@ -56,11 +61,16 @@ const Users = (props) => {
                         ) : (
                             <button
                                 type="button"
+                                disabled={props.idsOfFollowProcess.some(
+                                    (id) => id === user.id
+                                )}
                                 onClick={() => {
+                                    props.toggleIsFollowing(true, user.id);
                                     usersAPI.follow(user.id).then((data) => {
                                         if (data.resultCode === 0) {
                                             props.onFollow(user.id);
                                         }
+                                        props.toggleIsFollowing(false, user.id);
                                     });
                                 }}
                             >

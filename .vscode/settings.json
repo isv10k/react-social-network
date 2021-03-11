@@ -5,6 +5,12 @@
     //"prettier.requirePragma": true,
     "prettier.semi": true,
     "prettier.singleQuote": true,
-    "prettier.tabWidth": 4
+    "prettier.tabWidth": 4,
     //"prettier.insertPragma": true
+    "workbench.colorCustomizations": {
+        "titleBar.activeForeground": "#000",
+        "titleBar.inactiveForeground": "#000000CC",
+        "titleBar.activeBackground": "#FFC600",
+        "titleBar.inactiveBackground": "#FFC600CC"
+    }
 }
