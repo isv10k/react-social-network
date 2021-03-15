@@ -1,39 +1,20 @@
 import React from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import {
     onFollow,
-    setUsers,
     onUnFollow,
-    setCurrentPage,
-    setTotalUsersCount,
-    toggleIsFetching,
-    toggleIsFollowing,
+    getUsers,
+    getPageOfUsers,
 } from '../../redux/users-reducer';
 import Users from './Users';
-import { usersAPI } from '../../api/api';
 
 class UsersContainer extends React.Component {
     componentDidMount = () => {
-        this.props.toggleIsFetching(true);
-
-        usersAPI
-            .getUsers(this.props.currentPage, this.props.pageSize)
-            .then((data) => {
-                this.props.toggleIsFetching(false);
-                this.props.setUsers(data.items);
-                this.props.setTotalUsersCount(data.totalCount);
-            });
+        this.props.getUsers(this.props.currentPage, this.props.pageSize);
     };
 
     changeCurrentPage = (page) => {
-        this.props.setCurrentPage(page);
-        this.props.toggleIsFetching(true);
-
-        usersAPI.getUsers(page, this.props.pageSize).then((data) => {
-            this.props.toggleIsFetching(false);
-            this.props.setUsers(data.items);
-        });
+        this.props.getPageOfUsers(page, this.props.pageSize);
     };
 
     render() {
@@ -48,7 +29,6 @@ class UsersContainer extends React.Component {
                 onFollow={this.props.onFollow}
                 isFetching={this.props.isFetching}
                 idsOfFollowProcess={this.props.idsOfFollowProcess}
-                toggleIsFollowing={this.props.toggleIsFollowing}
             />
         );
     }
@@ -68,9 +48,6 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps, {
     onFollow,
     onUnFollow,
-    setUsers,
-    setCurrentPage,
-    setTotalUsersCount,
-    toggleIsFetching,
-    toggleIsFollowing,
+    getUsers,
+    getPageOfUsers,
 })(UsersContainer);

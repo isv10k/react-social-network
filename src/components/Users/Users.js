@@ -2,8 +2,6 @@ import s from './Users.module.css';
 import defaultAvatar from '../../assets/images/avatar.png';
 import Preloader from '../common/Preloader/Preloader';
 import { NavLink } from 'react-router-dom';
-import axios from 'axios';
-import { usersAPI } from '../../api/api';
 
 const Users = (props) => {
     const amountOfPages = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -47,13 +45,7 @@ const Users = (props) => {
                                     (id) => id === user.id
                                 )}
                                 onClick={() => {
-                                    props.toggleIsFollowing(true, user.id);
-                                    usersAPI.unFollow(user.id).then((data) => {
-                                        if (data.resultCode === 0) {
-                                            props.onUnFollow(user.id);
-                                        }
-                                        props.toggleIsFollowing(false, user.id);
-                                    });
+                                    props.onUnFollow(user.id);
                                 }}
                             >
                                 Unfollow
@@ -65,13 +57,7 @@ const Users = (props) => {
                                     (id) => id === user.id
                                 )}
                                 onClick={() => {
-                                    props.toggleIsFollowing(true, user.id);
-                                    usersAPI.follow(user.id).then((data) => {
-                                        if (data.resultCode === 0) {
-                                            props.onFollow(user.id);
-                                        }
-                                        props.toggleIsFollowing(false, user.id);
-                                    });
+                                    props.onFollow(user.id);
                                 }}
                             >
                                 Follow

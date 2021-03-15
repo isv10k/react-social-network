@@ -1,3 +1,5 @@
+import { usersAPI } from '../api/api';
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
@@ -94,13 +96,13 @@ const usersReducer = (state = initialState, action) => {
 
 export default usersReducer;
 
-export const onFollow = (userId) => {
+export const onFollowAC = (userId) => {
     return {
         type: FOLLOW,
         userId: userId,
     };
 };
-export const onUnFollow = (userId) => {
+export const onUnFollowAC = (userId) => {
     return {
         type: UNFOLLOW,
         userId: userId,
@@ -135,5 +137,51 @@ export const toggleIsFollowing = (isFetching, userId) => {
         type: TOGGLE_IS_FOLLOWING,
         isFetching: isFetching,
         userId: userId,
+    };
+};
+
+export const getUsers = (currentPage, pageSize) => {
+    return (dispatch) => {
+        dispatch(toggleIsFetching(true));
+
+        usersAPI.getUsers(currentPage, pageSize).then((data) => {
+            dispatch(toggleIsFetching(false));
+            dispatch(setUsers(data.items));
+            dispatch(setTotalUsersCount(data.totalCount));
+        });
+    };
+};
+export const getPageOfUsers = (page, pageSize) => {
+    return (dispatch) => {
+        dispatch(setCurrentPage(page));
+        dispatch(toggleIsFetching(true));
+
+        usersAPI.getUsers(page, pageSize).then((data) => {
+            dispatch(toggleIsFetching(false));
+            dispatch(setUsers(data.items));
+        });
+    };
+};
+
+export const onUnFollow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleIsFollowing(true, userId));
+        usersAPI.unFollow(userId).then((data) => {
+            if (data.resultCode === 0) {
+                dispatch(onUnFollowAC(userId));
+            }
+            dispatch(toggleIsFollowing(false, userId));
+        });
+    };
+};
+export const onFollow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleIsFollowing(true, userId));
+        usersAPI.follow(userId).then((data) => {
+            if (data.resultCode === 0) {
+                dispatch(onFollowAC(userId));
+            }
+            dispatch(toggleIsFollowing(false, userId));
+        });
     };
 };

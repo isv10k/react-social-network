@@ -10,7 +10,6 @@ const Profile = (props) => {
                 isFetching={props.isFetching}
             />
             <MyPostsContainer />
-            {/*<MyPostsContainer postsData={props.state.posts} draftPost={props.state.draftPost} dispatch={props.dispatch}/>*/}
         </>
     );
 };

@@ -1,3 +1,5 @@
+import { profileAPI } from '../api/api';
+
 const ADD_POST = 'ADD-POST';
 const DRAFT_POST_UPDATE = 'DRAFT-POST-UPDATE';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
@@ -83,6 +85,18 @@ export const toggleIsFetching = (isFetching) => {
     return {
         type: TOGGLE_IS_FETCHING,
         isFetching: isFetching,
+    };
+};
+
+export const getUserProfile = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleIsFetching(true));
+        if (!userId) userId = 2;
+        // TODO: re render on pure profile
+        profileAPI.getProfile(userId).then((data) => {
+            dispatch(toggleIsFetching(false));
+            dispatch(setUserProfile(data));
+        });
     };
 };
 
