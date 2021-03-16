@@ -22,7 +22,10 @@ const ProfileInfo = (props) => {
                     alt={props.userProfile.fullName}
                 />
                 <div className={s.profileData}>
-                    <Status status="alalallalaala" />
+                    <Status
+                        status={props.status}
+                        updateUserStatus={props.updateUserStatus}
+                    />
                     <p>
                         <span>Name: </span>
                         {props.userProfile.fullName}

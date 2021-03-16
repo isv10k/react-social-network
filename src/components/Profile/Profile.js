@@ -8,6 +8,8 @@ const Profile = (props) => {
             <ProfileInfo
                 userProfile={props.userProfile}
                 isFetching={props.isFetching}
+                updateUserStatus={props.updateUserStatus}
+                status={props.status}
             />
             <MyPostsContainer />
         </>

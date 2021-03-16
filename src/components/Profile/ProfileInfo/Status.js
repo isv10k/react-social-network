@@ -3,10 +3,22 @@ import React, { useState } from 'react';
 class Status extends React.Component {
     state = {
         editMode: false,
+        status: this.props.status,
     };
-    toggleEditMode = () => {
+    activateEditMode = () => {
         this.setState({
-            editMode: !this.state.editMode,
+            editMode: true,
+        });
+    };
+    deactivateEditMode = () => {
+        this.setState({
+            editMode: false,
+        });
+        this.props.updateUserStatus(this.state.status);
+    };
+    onStatusChange = (e) => {
+        this.setState({
+            status: e.currentTarget.value,
         });
     };
     render() {
@@ -14,15 +26,16 @@ class Status extends React.Component {
             <p>
                 <span>Status: </span>
                 {!this.state.editMode && (
-                    <span onDoubleClick={this.toggleEditMode}>
-                        {this.props.status}
+                    <span onDoubleClick={this.activateEditMode}>
+                        {this.props.status || '---'}
                     </span>
                 )}
                 {this.state.editMode && (
                     <input
                         autoFocus={true}
-                        onBlur={this.toggleEditMode}
-                        value={this.props.status}
+                        onBlur={this.deactivateEditMode}
+                        value={this.state.status}
+                        onChange={this.onStatusChange}
                     />
                 )}
             </p>
