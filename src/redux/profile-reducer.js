@@ -109,6 +109,7 @@ export const updateUserStatus = (status) => {
 };
 export const getUserStatus = (userId) => {
     return (dispatch) => {
+        if (!userId) userId = 2;
         profileAPI.getUserStatus(userId).then((data) => {
             dispatch(setUserStatusAC(data));
         });
