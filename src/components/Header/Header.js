@@ -7,7 +7,9 @@ const Header = (props) => {
             <img className={s.img} src="./../logo192.png" alt="logo" />
             <div className={s.login}>
                 {props.isAuth ? (
-                    props.login
+                    <NavLink to={`/profile/${props.userId}`}>
+                        {props.login}
+                    </NavLink>
                 ) : (
                     <NavLink to="/login">Login</NavLink>
                 )}
